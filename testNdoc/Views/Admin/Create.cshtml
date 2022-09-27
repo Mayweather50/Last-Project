@@ -1,0 +1,145 @@
+﻿@using testNdoc.Models
+@model Section
+
+<head>
+    <meta charset="utf-8">
+    <title>Размер текста</title>
+</head>
+
+<div class="row">
+    <div class="col-4" style="border-right: 1px solid #dcdcdc;">
+        <h6>Добавить компонент</h6>
+
+        <form method="post">
+            
+           
+                <label asp-for="Name">Имя</label><br />
+                <input type="text" asp-for="Name" />
+                <input type="button" onclick="CreateSection()" value="Добавить" />
+            
+
+        </form>
+
+
+
+        <div id="TableSectionsContainer">
+
+        </div>
+    </div>
+
+
+  
+    <div class="col-8" id="Documents">
+
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script>
+
+
+       function CreateSection()
+       {
+            $.ajax({
+                url: "Create",
+                data:{"Name" : $("#Name").val()},
+                method: "post",
+                success: function (data) {
+                    $("#TableSectionsContainer").html(data);
+                }
+            })
+       
+       }
+
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "TableSection",
+                method: "get",
+                success: function (data) {
+                    $("#TableSectionsContainer").html(data);
+                }
+            })
+
+        });
+
+
+
+
+
+        function GetDocuments(id) {
+            $.ajax({
+                url: "CreateDocuments",
+                method: "get",
+                data: { sectionId: id },
+                success: function (data) {
+                    $("#Documents").html(data);
+                }
+            });
+
+
+
+            $.ajax({
+                url: "TableDocumented",
+                method: "get",
+                success: function (data) {
+                    $("#TableDocumentsContainers").html(data);
+                }
+            })
+       
+        
+        }
+
+        
+
+        function SaveDocument() {
+
+
+         
+            var files = $('#fileUpload').prop("files");
+            var url = "/Admin/OnPostMyUploader";
+            formData = new FormData();
+            formData.append("MyUploader", files[0]);
+            formData.append("Name", $("#DocName").val());
+            formData.append("SectionId", $("#SectionId").val());
+
+            jQuery.ajax({
+                type: 'POST',
+                url: url,
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function (xhr) {
+                    
+                    xhr.setRequestHeader("XSRF-TOKEN",
+                        $('input:hidden[name="__RequestVerificationToken"]').val());
+                },
+                success: function (repo) {
+                    if (repo.status == "success") {
+                         GetTableDocuments();
+                    }
+                },
+                error: function () {
+                    alert("Error occurs");
+                }
+            });
+        }
+            function GetTableDocuments()
+    {
+            console.log($("SectionId").val());
+        $.ajax({
+                url: "TableDocument?id=" + $("#SectionId").val(),
+                method: "get",
+                success: function (data) {
+                    $("#TableDocumentsContainers").html(data);
+                }
+            })
+    }
+    </script>
+}
+
+
+

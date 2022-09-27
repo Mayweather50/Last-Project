@@ -1,0 +1,36 @@
+﻿@model Documents
+<form method="post">
+
+    <div>
+        
+        <h2>Загрузка файлов</h2>
+        <div class=" form-group ">
+
+            <label asp-for="Name">Имя</label><br />
+            <input type="text" asp-for="Name" id="DocName" class="form-control" />
+
+            <input type="hidden" asp-for="SectionId"/>
+            </div>
+            <div class=" form-group">
+                <div class="custom-file">
+
+                    <input type="file" id="fileUpload" class="fileUpload">
+
+                    <button id="btnUpload" type="button" onclick="SaveDocument()" class="btn  btn-success">Загрузить</button>
+           </div>
+       </div>
+    </div>
+</form>
+
+<div id="TableDocumentsContainers">
+
+
+
+</div>
+<script>
+    $(document).ready(function(){
+        GetTableDocuments();
+    })
+
+</script>
+

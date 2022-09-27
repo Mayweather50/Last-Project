@@ -1,0 +1,70 @@
+ Система координат
+
+
+int x = int.Parse(Console.ReadLine());
+            int y = int.Parse(Console.ReadLine());
+            int x1 = int.Parse(Console.ReadLine());
+            int y1 = int.Parse(Console.ReadLine());
+
+            if (x1 - x > y1 - y)
+            {
+                Console.WriteLine(x1 - x - 1);
+            }
+            else Console.WriteLine(y1 - y - 1);
+
+
+
+
+ string s;
+            int n1, n2;
+            for (int i = 1; i < 999999; i++)
+            {
+                s = String.Format("{0:000000}", i);
+                n1 = (int)s[0] + (int)s[1] + (int)s[2];
+                n2 = (int)s[3] + (int)s[4] + (int)s[5];
+                if (n1==n2)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+            Console.ReadLine();
+
+
+
+
+
+
+
+
+
+
+// Вывести символьную строку в обратном порядке.
+        public void DisplayRev(string str)
+        {
+            if (str.Length > 0)
+                DisplayRev(str.Substring(1, str.Length - 1));
+            else
+                return;
+            Console.Write(str[0]);
+        }
+    }
+    class RevStrDemo
+    {
+        static void Main()
+        {
+            string s = "Это тест";
+            RevStr rsOb = new RevStr();
+            Console.WriteLine("Исходная строка: " + s);
+            Console.Write("Перевернутая строка: ");
+            rsOb.DisplayRev(s);
+            Console.WriteLine();
+        }
+    }
+
+
+
+
+
+
+
+https://brainoteka.com/courses/linq/vvedenie-v-linq

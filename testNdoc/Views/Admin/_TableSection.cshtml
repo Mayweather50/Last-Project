@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Section >
+@{
+    ViewBag.Title = "Каталог компонентов";
+}
+<table class="table table-sm">
+    <tr>
+        <th>Имя компонента</th>
+      
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td style="cursor:pointer;" onclick="GetDocuments(@item.Id)">
+
+
+        @Html.DisplayFor(modelItem => item.Name)
+
+    </td>
+</tr>
+     }
+</table>

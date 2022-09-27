@@ -1,0 +1,52 @@
+﻿@*<form asp-action="Index" asp-controller="Admin">
+<div class="row">
+    <h2>Загрузка файлов</h2>
+
+    <div class=" form-group  text-center offset-3" enctype="multipart/form-data">
+        <div class="custom-file">
+            <input type="file" id="fileUpload" class="fileUpload">
+            <button id="btnUpload" class="btn  btn-success">Загрузить</button>
+        </div>
+    </div>
+</div>
+</form>
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+@* /Index?handler=MyUploader *@
+@*<script>
+    $("#fileUpload").on('change', function () {
+        var files = $('#fileUpload').prop("files");
+        var url = "/Home/OnPostMyUploader";
+        formData = new FormData();
+        formData.append("MyUploader", files[0]);
+
+        jQuery.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("XSRF-TOKEN",
+                    $('input:hidden[name="__RequestVerificationToken"]').val());
+            },
+            success: function (repo) {
+                if (repo.status == "success") {
+                    alert("File : " + repo.filename + " is uploaded successfully");
+                    alert("Файл успешно загружен")
+                }
+            },
+            error: function () {
+                alert("Error occurs");
+            }
+        });
+    });
+
+    // If you want to upload file on button click, then use below button click event
+    $("#btnUpload").on('click', function () {
+        // add jQuery ajax code to upload
+    });
+</script>*@

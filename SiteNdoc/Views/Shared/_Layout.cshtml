@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SiteNdoc</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+     <header class="header">
+        <div class="header__container container">
+            <div class="header__content">
+                <div class="header__top">
+                    <a href="/" class="logo">
+                        <img src="~/img/logo.svg" alt="Логотип ДГУ">
+                    </a>
+                    <div class="header__top-wrapper">
+                        <p>Нормативно- правовые документы ДГУ</p>
+                        <p>Дагестанский государственный университет</p>
+                    </div>
+                </div>
+                <div class="header__body">
+                    <h1 class="header__title">Нормативно-правовые документы, регулирующие деятельность ДГУ</h1>
+                    <div class="header__text">
+                        <p>Федеральное государственное бюджетное образовательное учреждение высшего образования</p>
+                        <p>Дагестанский Государственный Университет</p>
+                    </div>
+                </div>
+            </div>
+            <div class="header__img">
+                <img src="~/img/bg.svg" alt="">
+            </div>
+        </div>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__wrapper">
+                <p>Нормативно-правовые документы ДГУ</p>
+                <p>Дагестанский государственный университет</p>
+            </div>
+            <p class="footer__company">ИВЦ, 2022</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
